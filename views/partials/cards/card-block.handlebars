@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-body">
+    <div class="card-title">
+      <h5>Article ID: {{this.id}}</h5>
+      <h4>Title:</h4>
+      <p id="cardP">{{this.title}}</p>
+    </div>
+    <div class="card-text">
+      <h4>Summary:</h4>
+      <p id="cardP">{{this.summary}}</p>
+    </div>
+    <div id="buttonContainer">
+      <a href="{{this.link}}" id="cardBtn" class="btn">Link</a>
+      {{#unless saved}}
+      <form id="submitForm" action="/save/{{this.id}}" method="post">
+        <input id="cardBtn" class="btn btn-danger" type="submit" value="Save"></input>
+      </form>
+      {{/unless}}
+      {{#if saved}}
+      <form id="submitForm" action="/delete/{{this.id}}" method="post">
+        <input id="cardBtn" class="btn btn-danger" type="submit" value="Delete"></input>
+      </form>
+      {{/if}}
+    </div>
+    {{#if saved}}
+    {{> noteform/noteform-block}}
+    {{#if notes}}
+    <div id="notesDiv" class="container-fluid">
+      <h4>Notes</h4>
+      {{#each notes}}
+      <div class="card">
+        <div class="card-body">
+          {{this}}
+        </div>
+      </div>
+      {{/each}}
+      <form id="submitForm" action="/clearnotes/{{this.id}}" method="post">
+        <input id="cardBtn" class="btn btn-danger" type="submit" value="Clear"></input>
+        {{/if}}
+      </form>
+      {{/if}}
+    </div>
+  </div>
+</div>

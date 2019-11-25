@@ -1,0 +1,17 @@
+{{> jumbotron/jumbotron-block}}
+{{#unless data}}
+<form id="noteArchiveForm">
+    <h3>Search all notes.</h3>
+    <label for="archiveID" class="col-form-label">Article ID:</label>
+    <input required type="text" id="archiveID" name="archiveid">
+    <input class="btn btn-danger" id="archiveBtn" type="submit" value="Submit">
+</form>
+{{/unless}}
+<div>
+    {{#if data}}
+    {{#each data}}
+    {{> archive-card/archive-card-block}}
+    {{/each}}
+    <a id="archiveBack" class="btn btn-danger btn-lg" href="/notearchive" role="button">Return</a>
+    {{/if}}
+</div>

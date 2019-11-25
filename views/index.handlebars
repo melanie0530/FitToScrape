@@ -1,0 +1,14 @@
+{{> jumbotron/jumbotron-block}}
+{{#unless data}}
+<div id="noArticles">
+    <h2 id="mainHeader">No new articles.
+        <a id="navBtn" class="dropdown-item" href="/saved" role="button">Saved Articles</a>
+        <a id="navBtn" class="dropdown-item" href="/scrape" role="button">Scrape Articles</a>
+    </h2>
+</div>
+{{/unless}}
+{{#each data}}
+{{#unless saved}}
+{{> cards/card-block}}
+{{/unless}}
+{{/each}}
